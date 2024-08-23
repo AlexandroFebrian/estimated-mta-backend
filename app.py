@@ -50,12 +50,14 @@ def predict():
     
     predictions = model.predict(df_encoded)
     
+    del data, encoded_cols, encoded_data_test, df_encoded
+
     return jsonify({'predictions': predictions.tolist()})
   else:
     return jsonify({'error': 'Invalid file format, only .csv allowed'}), 400
 
 if __name__ == '__main__':
     app.run(
-      debug=True,
+      # debug=True,
       # host="192.168.15.234"
     )
